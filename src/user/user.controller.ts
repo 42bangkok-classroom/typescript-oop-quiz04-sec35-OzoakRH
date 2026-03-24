@@ -6,13 +6,13 @@ import { IUser } from './user.interface';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get()
-  findAll(): IUser[] {
-    return this.userService.findAll();
-  }
-  
   @Get('test')
   getTest(): string[] {
     return this.userService.test();
+  }
+
+  @Get()
+  findAll(): IUser[] {
+    return this.userService.findAll();
   }
 }
