@@ -8,7 +8,7 @@ export class UserService {
   findAll(): IUser[] {
     const filePath = path.resolve(process.cwd(), 'data/users.json');
     const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const users: IUser[] = JSON.parse(fileContent);
+    const users: IUser[] = JSON.parse(fileContent) as IUser[];
     return users;
   }
   test(): string[] {
