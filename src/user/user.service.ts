@@ -3,7 +3,6 @@ import { IUser } from './user.interface';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CreateUserDto } from './dto/create-user.dto';
-import { max } from 'class-validator';
 
 @Injectable()
 export class UserService {
