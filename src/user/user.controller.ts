@@ -1,6 +1,15 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  Post,
+  Body,
+  ValidationPipe,
+} from '@nestjs/common';
 import { UserService } from './user.service';
-import { IUser } from './user.interface';
+import type { IUser } from './user.interface';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 export class UserController {
@@ -22,5 +31,9 @@ export class UserController {
   ): Partial<IUser> | IUser {
     const fieldArray = fields ? fields.split(',') : undefined;
     return this.userService.findOne(id, fieldArray);
+  }
+  @Post()
+  create(@Body(new ValidationPipe()) CreateUserDto: CreateUserDto): IUser {
+    return this.userService.create(CreateUserDto);
   }
 }
