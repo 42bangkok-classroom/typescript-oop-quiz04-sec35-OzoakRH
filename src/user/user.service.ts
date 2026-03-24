@@ -23,7 +23,7 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-    if (!fields || fields.length === 0) {
+    if (fields === undefined) {
       return user;
     }
     const filteredUser: Record<string, unknown> = {};
