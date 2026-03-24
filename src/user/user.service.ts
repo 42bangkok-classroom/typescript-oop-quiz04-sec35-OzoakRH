@@ -19,7 +19,7 @@ export class UserService {
   findOne(id: string, fields?: string[]): Partial<IUser> | IUser {
     const users = this.findAll();
     const user = users.find((u) => u.id === id);
-    
+
     if (!user) {
       throw new NotFoundException('User not found');
     }
@@ -29,7 +29,9 @@ export class UserService {
     const filteredUser: Record<string, unknown> = {};
     fields.forEach((field) => {
       if (field in user) {
-        filteredUser[field] = (user as unknown as Record<string, unknown>)[field];
+        filteredUser[field] = (user as unknown as Record<string, unknown>)[
+          field
+        ];
       }
     });
     return filteredUser as Partial<IUser>;
